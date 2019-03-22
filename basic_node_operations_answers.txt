@@ -1,0 +1,45 @@
+1. Run the commands sort, wc and uniq on the commands.js file. Explain how they
+work and what the output was.
+
+`sort` outputs every line in the file organized in alphabetical order. `wc`
+outputs the total number of lines in the file, followed by the total number of
+words, followed by the total number of characters, followed by the file name.
+`uniq` will output the full inputted file with any adjacent duplicate lines
+removed. If two line are identical but are not next to each other they will both
+appear in the output.
+
+2. Using the pipe (|) connect at least two commands and run it on commands.js.
+Explain what the output was and why the specific data was outputted.
+
+I ran `$ sort commands.js | uniq`. This outputted an alphebetized list of all
+the lines in commands.js with all duplicates removed. Sort ensured that all
+duplicates would appear adjacent to each other and uniq then removed them.
+
+6. In this checkpoint, you encountered built-in JavaScript methods as well as
+the new ES6 syntax. Review the information below before attempting the
+programming challenge.
+...
+Given a string, reverse the order of characters in each word within a sentence
+while maintaining the original word order and whitespace and return the string.
+To improve your problem-solving experience, use the suggested functions to solve
+the problem.
+
+function okazakiString(str) {
+  var wordArray = str.split(' ');
+  var backwardsWordArray = [];
+  wordArray.forEach ((word) => {
+    var letterArray = [];
+    for (let i = 0; i < word.length; i++) {
+      letterArray.push(word[i]);
+    }
+    var backwardsletterArray = letterArray.reverse();
+    var backwardsWord = letterArray.join('');
+    backwardsWordArray.push(backwardsWord);
+  });
+  var backwardsString = backwardsWordArray.join(' ');
+  return backwardsString;
+}
+
+var str = "What is happening?";
+
+console.log(okazakiString(str)); // "tahW si ?gnineppah"
